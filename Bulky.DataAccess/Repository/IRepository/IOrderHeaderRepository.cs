@@ -1,0 +1,14 @@
+﻿using Bulky.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Bulky.DataAccess.Repository.IRepository
+{
+    public interface IOrderHeaderRepository : IRepository<OrderHeader>
+    {
+        void Update(OrderHeader obj);
+        void UpdateStatus(int id, string orderStatus, string? paymentStatus = null);
+        void UpdateRazorPaymentId(int id, string sessionId, string paymentIntentId);
+    }
+}

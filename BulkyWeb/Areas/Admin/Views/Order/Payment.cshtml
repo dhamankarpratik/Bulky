@@ -1,0 +1,59 @@
+﻿@model OrderVM
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Payment</title>
+</head>
+
+<body>
+    <form id="razorpayForm" asp-area="Customer" asp-controller="Cart" asp-action="OrderConfirmation" method="post">
+        <input id="razorpay_payment_id" type="hidden" name="razorpay_payment_id" />
+        <input id="razorpay_order_id" type="hidden" name="razorpay_order_id" />
+        <input id="razorpay_signature" type="hidden" name="razorpay_signature" />
+    </form>
+
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+
+            var options = {
+                "key": "@ViewBag.RazorpayKey",
+                "amount": "@ViewBag.Amount",
+                "currency": "INR",
+                "name": "Bulky Book",
+                "description": "Order Payment",
+                "order_id": "@ViewBag.OrderId",
+
+                handler: function(response) {
+
+                    document.getElementById('razorpay_payment_id').value =
+                        response.razorpay_payment_id;
+
+                    document.getElementById('razorpay_order_id').value =
+                        response.razorpay_order_id;
+
+                    document.getElementById('razorpay_signature').value =
+                        response.razorpay_signature;
+
+                    document.getElementById("razorpayForm").submit();
+                },
+
+                "prefill": {
+                    "name": "@Model.OrderHeader.Name",
+                    "contact": "@Model.OrderHeader.PhoneNumber"
+                }
+            };
+
+            var rzp = new Razorpay(options);
+
+            window.onload = function() {
+                rzp.open();
+            };
+
+    </script>
+
+</body>
+</html>
