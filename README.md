@@ -51,18 +51,16 @@ This project is based on the **ASP.NET Core MVC** course by **Bhrugen Patel** on
 
 ## Project Structure
 
-```
 Bulky
-│
-├── BulkyWeb
-├── Bulky.Models
 ├── Bulky.DataAccess
-├── Bulky.Utility
-```
+├── Bulky.Models
+├── Bulky.Utilities
+├── BulkyWeb             # Main ASP.NET Core MVC application
+├── BulkyWebRazor        # Separate Razor Pages practice project
+└── README.md
+
 
 ## Screenshots
-
-Add screenshots of:
 
 - Home Page
  <img width="1280" height="779" alt="image" src="https://github.com/user-attachments/assets/561b3ef4-8ca6-4687-b9c0-eb72137cd4a7" />
@@ -87,19 +85,40 @@ Add screenshots of:
   <img width="1280" height="767" alt="image" src="https://github.com/user-attachments/assets/a0dbd4ca-3533-42c1-ab5a-db114650835d" />
   <img width="1280" height="762" alt="image" src="https://github.com/user-attachments/assets/4e4682a7-1f08-4e95-9f70-1281b274eff2" />
 
-  ## Payment Gateway
 
-This project uses Razorpay for online payments.
+## Getting Started
 
-Configure your API keys inside:
+## Prerequisites
+-.NET 8 SDK
+-SQL Server
+-Visual Studio 2022 or another compatible IDE
+-Razorpay Test Mode account (for payment testing)
+
+##Configuration
+-Clone the repository.
+-Configure the SQL Server connection string in appsettings.json.
+-Configure Razorpay Test Mode credentials locally.
+-Apply Entity Framework Core migrations.
+-Build and run the BulkyWeb project.
+
+##Database
+-The application uses Entity Framework Core Code First with SQL Server.
+-Update the connection string in appsettings.json before running the application.
+
+## Payment Gateway
+
+This project uses **Razorpay** for online payment processing.
+
+For security, Razorpay credentials are **not included in this repository**.
+
+Configure your Razorpay Test Mode credentials locally:
 
 ```json
 "RazorPay": {
-  "KeyId": "Your_Key",
-  "SecretKey": "Your_Secret"
+  "KeyId": "YOUR_RAZORPAY_KEY_ID",
+  "SecretKey": "YOUR_RAZORPAY_SECRET_KEY"
 }
 ```
-
 ## Future Improvements
 
 - Product Reviews
@@ -112,20 +131,22 @@ Configure your API keys inside:
 
 ## Learning Outcomes
 
-During this project I learned:
+Through this project, I gained hands-on experience with:
 
 - ASP.NET Core MVC
 - Entity Framework Core
+- ASP.NET Core Identity
 - Authentication & Authorization
 - Role-Based Access Control
-- Repository & Unit of Work Pattern
+- Repository & Unit of Work Patterns
 - Dependency Injection
-- Razorpay Integration
+- Razorpay Payment Integration
 - CRUD Operations
 - Session & Cookies
 - File Uploads
 - DataTables
-- Deployment Basics
+- SQL Server Database Integration
+- Application Configuration
 
 ## Author
 
